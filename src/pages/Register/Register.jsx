@@ -33,7 +33,7 @@ const Register = () => {
     <div className="hero min-h-screen bg-base-200 form-bg">
       <div className="hero-content flex-col lg:flex-row-reverse">
         <div className="text-center lg:text-left">
-          <h1 className="text-5xl font-bold text-white">Register now!</h1>
+          <h1 className="text-5xl font-bold text-purple-600">Register now!</h1>
           <p className="py-6 text-2xl font-bold text-purple-600">
             Action figure toys
           </p>

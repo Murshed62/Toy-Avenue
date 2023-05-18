@@ -1,7 +1,13 @@
 import { Link } from "react-router-dom";
 import logo from "../../assets/logo.jpg";
+import { useContext } from "react";
+import { AuthContext } from "../Provider/AuthProvider";
 
 const Header = () => {
+  const {user, logOut} = useContext(AuthContext);
+  
+
+
   return (
     <div className="navbar bg-base-100">
       <div className="navbar-start">
@@ -69,39 +75,41 @@ const Header = () => {
             </Link>
           </li>
           <li>
-            <Link className="text-2xl font-bold" to="/">
+            <Link className="text-2xl font-bold" to="/alltoys">
               All Toys
             </Link>
           </li>
           <li>
-            <Link className="text-2xl font-bold" to="/">
+            <Link className="text-2xl font-bold" to="/mytoys">
               My Toys
             </Link>
           </li>
           <li>
-            <Link className="text-2xl font-bold" to="/">
+            <Link className="text-2xl font-bold" to="/addatoy">
               Add A Toy
             </Link>
           </li>
           <li>
-            <Link className="text-2xl font-bold" to="/">
+            <Link className="text-2xl font-bold" to="/blogs">
               Blogs
             </Link>
           </li>
-          <li>
-            <Link className="text-2xl font-bold" to="/">
-              User profile picture
-            </Link>
-          </li>
+          
         </ul>
       </div>
       <div className="navbar-end">
-        <Link to="/login" className="btn me-2 bg-purple-500 hover:bg-purple-600">
-          Login
-        </Link>
-        <Link to="/register" className="btn bg-purple-500 hover:bg-purple-600">
-          Register
-        </Link>
+      {
+    user?.displayName ? <span className="w-14 rounded-full"><img style={{width:"50px"}} className="rounded-full w-1/2" src={user?.photoURL} title={user?.displayName}alt="" />
+    </span>: ""
+   }
+       {
+      user ? <Link to="/login" onClick={logOut} className="btn font-bold bg-purple-400 border-none text-white hover:bg-purple-600">Logout</Link>
+      :
+      <div>
+        <Link to="/login" className="font-bold mr-3 mb-1 bg-purple-500 border-none  hover:bg-purple-600 forMblLink py-3 px-4 rounded text-white">Login</Link>
+      <Link to="/register" className="font-bold bg-purple-500 border-none hover:bg-purple-600 forMblLink py-3 px-4 rounded text-white">Register</Link>
+      </div>
+    }
       </div>
     </div>
   );
