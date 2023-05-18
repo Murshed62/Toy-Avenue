@@ -1,0 +1,36 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.form-bg{
+    background-image: url('../src/assets/loginRegister.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.logo{
+    width: 100px;
+    border-radius: 50%;
+    border: 5px solid purple;
+}
+.navbar{
+    width: 80%;
+    margin: auto;
+}
+.menu li{
+    text-transform: uppercase;
+    margin-left: 3px;
+    transition: 0.1s ease-in-out;
+}
+.menu li:hover{
+    background: #9333EA;
+    color: #ffff;
+    border-radius: 20px;
+    border: none;
+}
+.form-custom{
+    opacity: 0.9;
+}
+.primary-color{
+    color: #9333EA;
+}
