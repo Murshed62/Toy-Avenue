@@ -1,0 +1,25 @@
+@media only screen and (max-width: 600px) {
+   .mobile-width{
+    width: 100%;
+    padding: 0;
+    padding: 15px 0;
+   }
+   .mobile-logo{
+    width: 65px;
+   }
+   .mobile-logout{
+    padding: 0;
+    padding: 0 10px;
+    margin-right: 5px;
+   }
+   .mobile-register{
+    padding: 0;
+    padding: 10px;
+    margin-right: 5px;
+   }
+   .mobile-login{
+    padding: 0;
+    padding: 10px;
+    margin-right: 5px;
+   }
+  }

@@ -1,0 +1,21 @@
+.notFoundImg{
+    width: 50%;
+    
+}
+
+.home-redirect{
+    font-size: 40px;
+    font-weight: 700;
+    color: white;
+    position: absolute;
+    bottom: 10%;
+    left: 67%;
+    background-color: #f0c106;
+    padding: 0 20px;
+    border-radius: 20px;
+    
+}
+.home-redirect:hover{
+    background-color:#9333EA;
+    transition-duration: .4s;
+}

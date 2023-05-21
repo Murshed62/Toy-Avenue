@@ -1,18 +1,23 @@
 import { Link } from "react-router-dom";
 import logo from "../../assets/logo.jpg";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { AuthContext } from "../Provider/AuthProvider";
+import './Header.css'
 
 const Header = () => {
   const {user, logOut} = useContext(AuthContext);
   
+  const [isOpen, setIsOpen] = useState(false);
 
+  function toggleDropdown() {
+    setIsOpen(!isOpen);
+  }
 
   return (
-    <div className="navbar bg-base-100">
+    <div className="navbar bg-purple-100 px-10 py-5 rounded mobile-width">
       <div className="navbar-start">
         <div className="dropdown">
-          <label tabIndex={0} className="btn btn-ghost lg:hidden">
+          <label tabIndex={0} className="btn btn-ghost lg:hidden" onClick={toggleDropdown}>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               className="h-5 w-5"
@@ -28,43 +33,33 @@ const Header = () => {
               />
             </svg>
           </label>
-          <ul
+          {
+            isOpen && (
+              <ul
             tabIndex={0}
             className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
           >
             <li>
-              <a>Item 1</a>
-            </li>
-            <li tabIndex={0}>
-              <a className="justify-between">
-                Parent
-                <svg
-                  className="fill-current"
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                >
-                  <path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" />
-                </svg>
-              </a>
-              <ul className="p-2">
-                <li>
-                  <a>Submenu 1</a>
-                </li>
-                <li>
-                  <a>Submenu 2</a>
-                </li>
-              </ul>
+              <Link to="/">Home</Link>
             </li>
             <li>
-              <a>Item 3</a>
+              <Link to="/alltoys">All Toys</Link>
+            </li>
+            <li>
+              <Link to="/addatoy">Add a Toy</Link>
+            </li>
+            <li>
+              <Link to="/blogs">Blogs</Link>
             </li>
           </ul>
+            
+          )}
         </div>
         <Link>
-          <img className="logo" src={logo} alt="" />
-          
+          <div className="flex items-center">
+          <img className="logo mobile-logo" src={logo} alt="" />
+          <h1 className="ps-3 font-bold">Toy Avenue</h1>
+          </div>
         </Link>
       </div>
       <div className="navbar-center hidden lg:flex">
@@ -80,9 +75,12 @@ const Header = () => {
             </Link>
           </li>
           <li>
-            <Link className="text-2xl font-bold" to="/mytoys">
-              My Toys
-            </Link>
+           {
+            user?.email ?  <Link className="text-2xl font-bold" to="/mytoys">
+            My Toys
+          </Link>
+          : ""
+           }
           </li>
           <li>
             <Link className="text-2xl font-bold" to="/addatoy">
@@ -103,11 +101,11 @@ const Header = () => {
     </span>: ""
    }
        {
-      user ? <Link to="/login" onClick={logOut} className="btn font-bold bg-purple-400 border-none text-white hover:bg-purple-600">Logout</Link>
+      user ? <Link to="/login" onClick={logOut} className="btn font-bold bg-purple-400 border-none text-white hover:bg-purple-600 mobile-logout">Logout</Link>
       :
       <div>
-        <Link to="/login" className="font-bold mr-3 mb-1 bg-purple-500 border-none  hover:bg-purple-600 forMblLink py-3 px-4 rounded text-white">Login</Link>
-      <Link to="/register" className="font-bold bg-purple-500 border-none hover:bg-purple-600 forMblLink py-3 px-4 rounded text-white">Register</Link>
+        <Link to="/login" className="font-bold mr-3 mb-1 bg-purple-500 border-none  hover:bg-purple-600 forMblLink py-3 px-4 rounded text-white mobile-login">Login</Link>
+      <Link to="/register" className="font-bold mobile-register bg-purple-500 border-none hover:bg-purple-600 forMblLink py-3 px-4 rounded text-white">Register</Link>
       </div>
     }
       </div>
