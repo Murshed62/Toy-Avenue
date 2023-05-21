@@ -1,5 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { ToastContainer, toast } from 'react-toastify';
+
+
 
 
 
@@ -14,12 +17,16 @@ const MappingViewDetails = ({mt, myToy, setMyToy}) => {
         
       })
       .then(res=>res.json())
-      .then(data=>console.log(data))
-      console.log(_id);
-      if(data.deletedCount > 0){
-        const delFilter = myToy.filter((del)=>del._id != _id);
-        setMyToy(delFilter);
-      }
+      .then(data=>{console.log(data)
+        if(data.deletedCount > 0){
+          const delFilter = myToy.filter((del)=>del._id != _id);
+          setMyToy(delFilter);
+          toast('product deleted successfully')
+          
+        }
+      })
+      
+      
     }
 
     return (
@@ -38,7 +45,8 @@ const MappingViewDetails = ({mt, myToy, setMyToy}) => {
                 <td><button onClick={()=>handleDelete(_id)}><Link>delete</Link></button></td>
                 
               </tr>
-              
+
+              <ToastContainer />
             </tbody>
     );
 };

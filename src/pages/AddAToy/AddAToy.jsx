@@ -3,6 +3,10 @@ import Footer from "../../Shared/Footer/Footer";
 import Select from "react-select";
 import useTitle from "../../hooks/useTitle";
 import { AuthContext } from "../../Shared/Provider/AuthProvider";
+import { ToastContainer, toast } from 'react-toastify';
+  import 'react-toastify/dist/ReactToastify.css';
+
+
 
 const options = [
   { value: "avengers", label: "Avengers" },
@@ -52,7 +56,12 @@ const AddAToy = () => {
       body: JSON.stringify(collectProductInfo),
     })
       .then((res) => res.json())
-      .then((data) => console.log(data));
+      .then((data) => {console.log(data)
+      if(data.insertedId){
+        toast('product added successfully');
+        
+      }
+      });
 
       form.reset();
   };
@@ -189,6 +198,7 @@ const AddAToy = () => {
             value="Submit"
           />
         </form>
+        <ToastContainer />
       </div>
       <Footer></Footer>
     </div>

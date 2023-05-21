@@ -10,25 +10,20 @@ const MyToys = () => {
   console.log(user.email);
 
   const [myToy, setMyToy] = useState([]);
-  const [sorting, setSorting] = useState("");
+  const [sorting, setSorting] = useState("")
   
-
-  useEffect(() => {
-    fetch(`https://mysite-server-six.vercel.app/products/?email=${user?.email}&sort=${sorting}`)
-      .then((res) => res.json())
-      .then((data) => setMyToy(data));
-  }, [sorting]);
-
-  
-
-  console.log(myToy);
+  useEffect(()=>{
+    fetch(`https://mysite-server-six.vercel.app/products?email=${user?.email}&sort=${sorting}`)
+    .then(res=>res.json())
+    .then(data=>setMyToy(data))
+  },[sorting])
 
 
   return (
     <div>
       
       <div>
-        <button onClick={()=>setSorting(1)} className="btn">Ascending</button>
+        <button onClick={()=>setSorting(1)}  className="btn">Ascending</button>
         <button onClick={()=>setSorting(-1)} className="btn">Descending</button>
         <div>
      <div className="overflow-x-auto mt-10">

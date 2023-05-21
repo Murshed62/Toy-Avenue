@@ -2,6 +2,7 @@ import React, { useContext, useState } from 'react';
 import { useLoaderData } from 'react-router-dom';
 import Footer from '../../Shared/Footer/Footer';
 import { AuthContext } from '../../Shared/Provider/AuthProvider';
+import { ToastContainer, toast } from 'react-toastify';
 
 const Update = () => {
     const loadData = useLoaderData();
@@ -43,7 +44,7 @@ const Update = () => {
     })
       .then((res) => res.json())
       .then((data) => {console.log(data) 
-         alert('updated')});
+         toast('updated')});
 
 
       form.reset();
@@ -112,6 +113,7 @@ const Update = () => {
               value="Submit"
             />
           </form>
+          <ToastContainer />
         </div>
         <Footer></Footer>
       </div>
