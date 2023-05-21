@@ -44,7 +44,7 @@ const AddAToy = () => {
     };
     
 
-    fetch("http://localhost:5000/products", {
+    fetch("https://mysite-server-six.vercel.app/products", {
       method: "POST",
       headers: {
         "content-type": "application/json",

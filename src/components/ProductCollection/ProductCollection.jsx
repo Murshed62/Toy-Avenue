@@ -13,7 +13,7 @@ const ProductCollection = () => {
   const [subCategoryThree, setSubCategoryThree] = useState([]);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/products`)
+    fetch(`https://mysite-server-six.vercel.app/products`)
       .then((res) => res.json())
       .then((data) => {
         const subCategory1 = data.filter((item) => item.selected === "marvel");

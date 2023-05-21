@@ -9,7 +9,7 @@ const MappingViewDetails = ({mt, myToy, setMyToy}) => {
     console.log(mt);
 
     const handleDelete =(_id)=>{
-      fetch(`http://localhost:5000/products/${_id}`,{
+      fetch(`https://mysite-server-six.vercel.app/products/${_id}`,{
         method:'DELETE'
         
       })

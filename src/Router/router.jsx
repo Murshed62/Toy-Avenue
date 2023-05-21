@@ -52,7 +52,7 @@ const router = createBrowserRouter([
       {
         path: '/update/:id',
         element: <Update></Update>,
-        loader: ({params}) => fetch(`http://localhost:5000/products/${params.id}`)
+        loader: ({params}) => fetch(`https://mysite-server-six.vercel.app/products/${params.id}`)
       },
       // {
       //   path: "/viewdetails",
@@ -69,7 +69,7 @@ const router = createBrowserRouter([
       {
         path: ":id",
         element: <AllToysCollection></AllToysCollection>,
-        loader: () => fetch('http://localhost:5000/products')
+        loader: () => fetch('https://mysite-server-six.vercel.app/products')
       },
     ],
   },
@@ -80,7 +80,7 @@ const router = createBrowserRouter([
       {
         path:':id',
         element:<PrivateRoute><ShowViewDetails></ShowViewDetails></PrivateRoute>,
-        loader:({params}) =>fetch(`http://localhost:5000/products/${params.id}`)
+        loader:({params}) =>fetch(`https://mysite-server-six.vercel.app/products/${params.id}`)
       }
     ]
   }
