@@ -1,6 +1,8 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import Footer from "../../Shared/Footer/Footer";
 import Select from "react-select";
+import useTitle from "../../hooks/useTitle";
+import { AuthContext } from "../../Shared/Provider/AuthProvider";
 
 const options = [
   { value: "avengers", label: "Avengers" },
@@ -9,6 +11,9 @@ const options = [
 ];
 
 const AddAToy = () => {
+  useTitle('addatoy');
+  const {user} =useContext(AuthContext);
+  console.log(user);
   const [selectedOption, setSelectedOption] = useState(null);
 
   const addAToyHandler = (event) => {
@@ -22,6 +27,9 @@ const AddAToy = () => {
     const price = form.price.value;
     const description = form.description.value;
     const selected = selectedOption.value;
+    // const sellerEmail = form.sellerEmail.value
+    const sellerEmail = user?.email;
+
 
     const collectProductInfo = {
       photo,
@@ -32,6 +40,7 @@ const AddAToy = () => {
       price,
       selected,
       description,
+      sellerEmail
     };
     
 
@@ -44,6 +53,8 @@ const AddAToy = () => {
     })
       .then((res) => res.json())
       .then((data) => console.log(data));
+
+      form.reset();
   };
 
   return (
@@ -76,6 +87,8 @@ const AddAToy = () => {
                     type="text"
                     placeholder="Seller Name"
                     name="sellerName"
+                    defaultValue={user?.displayName}
+                    readOnly
                     className="input input-bordered w-80"
                   />
                 </label>
@@ -117,6 +130,21 @@ const AddAToy = () => {
                     type="text"
                     name="toyName"
                     placeholder="Toy Name"
+                    className="input input-bordered w-80"
+                  />
+                </label>
+              </div>
+              <div className="form-control">
+                <label className="label">
+                  <span className="label-text font-bold">Seller Email</span>
+                </label>
+                <label className="input-group">
+                  <input
+                    type="text"
+                    name="sellerEmail"
+                    placeholder="seller email"
+                    defaultValue={user?.email}
+                    readOnly
                     className="input input-bordered w-80"
                   />
                 </label>

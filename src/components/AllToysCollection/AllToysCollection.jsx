@@ -5,6 +5,8 @@ import AllToys from '../../pages/AllToys/AllToys';
 const AllToysCollection = () => {
     const {_id} = useParams();
     const products = useLoaderData();
+
+    
     
     return (
         <div>

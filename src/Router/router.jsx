@@ -10,8 +10,10 @@ import Blogs from "../pages/Blogs/Blogs";
 import ErrorPage from "../pages/ErrorPage/ErrorPage";
 import ProductDetails from "../pages/ProductDetails/ProductDetails";
 import AllToysCollection from "../components/AllToysCollection/AllToysCollection";
-import ViewDetails from "../pages/ViewDetails/ViewDetails";
 import PrivateRoute from "./PrivateRoute";
+import ShowViewDetails from "../pages/ShowViewDetails/ShowViewDetails";
+import ViewDetails from "../pages/ViewDetails/ViewDetails";
+import Update from "../components/Update/Update";
 
 const router = createBrowserRouter([
   {
@@ -48,23 +50,18 @@ const router = createBrowserRouter([
         element: <Blogs></Blogs>,
       },
       {
-        path: "/viewdetails",
-        element: <ViewDetails></ViewDetails>
-      }
-    ],
-  },
-  {
-    path: "/products",
-    element: <Main></Main>,
-    children: [
-      {
-        path: ":id",
-        element: <ProductDetails></ProductDetails>,
-        loader: ({ params }) =>
-          fetch(`http://localhost:5000/products/${params.id}`),
+        path: '/update/:id',
+        element: <Update></Update>,
+        loader: ({params}) => fetch(`http://localhost:5000/products/${params.id}`)
       },
+      // {
+      //   path: "/viewdetails",
+      //   element: <ViewDetails></ViewDetails>,
+      //   loader: fetch('http://localhost:5000/products')
+      // }
     ],
   },
+  
   {
     path: "/products",
     element: <Main></Main>,
@@ -76,6 +73,17 @@ const router = createBrowserRouter([
       },
     ],
   },
+  {
+    path:'/showviewdetails/',
+    element:<Main></Main>,
+    children:[
+      {
+        path:':id',
+        element:<PrivateRoute><ShowViewDetails></ShowViewDetails></PrivateRoute>,
+        loader:({params}) =>fetch(`http://localhost:5000/products/${params.id}`)
+      }
+    ]
+  }
 ]);
 
 export default router;

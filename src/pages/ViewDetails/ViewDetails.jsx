@@ -1,9 +1,13 @@
 import React from 'react';
+import { useLoaderData } from 'react-router-dom';
+import ShowViewDetails from '../ShowViewDetails/ShowViewDetails';
 
 const ViewDetails = () => {
+    
+
     return (
         <div>
-            <h2>welcome to view details page</h2>
+         
         </div>
     );
 };

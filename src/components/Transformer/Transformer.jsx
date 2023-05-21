@@ -1,14 +1,12 @@
-import React from "react";
+import React from 'react';
 import { FaStar } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link } from 'react-router-dom';
 
 
-const Products = ({pd}) => {
-  const {_id,sellerName, price, rating, quantity, photo, description, detail, selected, toyName} = pd;
- 
-
-  return (
-    <div className="card w-96 bg-base-100 shadow-xl bg-purple-200">
+const Transformer = ({subCate}) => {
+    const {_id,sellerName, price, rating, quantity, photo, description, detail, selected, toyName} = subCate;
+    return (
+        <div className="card w-96 bg-base-100 shadow-xl bg-purple-200">
       <figure>
         <img className="card-img pt-5"
           src={photo}
@@ -21,11 +19,11 @@ const Products = ({pd}) => {
         <h2 className="card-title">Rating:<FaStar className="text-yellow-500"/>{rating}</h2>
        
         <div className="card-actions justify-end">
-         <Link to={`/toydetails/${_id}`}> <button className="btn btn-primary">View Details</button></Link>
+         <Link to={`/showviewdetails/${_id}`}> <button className="btn btn-primary">View Details</button></Link>
         </div>
       </div>
     </div>
-  );
+    );
 };
 
-export default Products;
+export default Transformer;

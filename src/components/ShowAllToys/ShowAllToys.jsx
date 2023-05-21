@@ -16,7 +16,7 @@ const ShowAllToys = ({single}) => {
                 <td>{selected}</td>
                 <td>${price}</td>
                 <td>{quantity}</td>
-                <td><Link to={`/viewdetails/${_id}`} className='btn bg-purple-500 border-none font-bold hover:bg-purple-600'>View Details</Link></td>
+                <td><Link to={`/showviewdetails/${_id}`} className='btn bg-purple-500 border-none font-bold hover:bg-purple-600'>View Details</Link></td>
               </tr>
               
             </tbody>

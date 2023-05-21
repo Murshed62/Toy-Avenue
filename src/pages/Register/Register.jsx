@@ -1,32 +1,41 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../Shared/Provider/AuthProvider";
+import { ToastContainer, toast } from 'react-toastify';
+import useTitle from "../../hooks/useTitle";
+
 
 const Register = () => {
+  useTitle('register');
   const { createUser, userImageDetails } = useContext(AuthContext);
+  const [errors, setErrors] = useState("");
+  const [success, setSuccess] = useState(""); 
 
   const registerHandler = (event) => {
     event.preventDefault();
-
+    setErrors("");
     const form = event.target;
     const name = form.name.value;
     const email = form.email.value;
     const password = form.password.value;
     const photo = form.photo.value;
 
-    
+    if(password.length < 6){
+      setErrors(toast("The password is less than 6 characters"))
+    }
 
     createUser(email, password, name, photo)
       .then((result) => {
         const createdUser = result.user;
         userImageDetails(name, photo);
         navigate("/");
-        setSucess(toast("signup Successfully"));
-        form.reset();
+        setSuccess(toast("signup Successfully"));
+        
       })
       .catch((error) => {
         console.log(error);
       });
+      form.reset();
   };
 
   return (
@@ -97,6 +106,7 @@ const Register = () => {
                   </p>
                 </label>
               </div>
+              
               <div className="form-control mt-6">
                 <button className="btn bg-purple-500 hover:bg-purple-600 font-bold text-2xl">
                   Register
@@ -106,6 +116,7 @@ const Register = () => {
           </div>
         </form>
       </div>
+      <ToastContainer/>
     </div>
   );
 };
