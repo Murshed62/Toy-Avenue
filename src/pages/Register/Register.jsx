@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../Shared/Provider/AuthProvider";
 import { ToastContainer, toast } from 'react-toastify';
@@ -8,8 +8,15 @@ import useTitle from "../../hooks/useTitle";
 const Register = () => {
   useTitle('register');
   const { createUser, userImageDetails } = useContext(AuthContext);
+  const formRef = useRef(null);
   const [errors, setErrors] = useState("");
   const [success, setSuccess] = useState(""); 
+
+  const handleReset =() =>{
+    if(formRef.current){
+      formRef.current.reset();
+    }
+  }
 
   const registerHandler = (event) => {
     event.preventDefault();
@@ -106,7 +113,9 @@ const Register = () => {
                   </p>
                 </label>
               </div>
-              
+              <div>
+                <button onClick={handleReset} className="bg-purple-300 p-1 text-white font-bold rounded hover:bg-purple-400">Reset</button>
+              </div>
               <div className="form-control mt-6">
                 <button className="btn bg-purple-500 hover:bg-purple-600 font-bold text-2xl">
                   Register

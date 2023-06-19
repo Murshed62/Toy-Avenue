@@ -34,7 +34,7 @@ const AllToys = () => {
           className="p-2 border-2 rounded-lg"
         />{" "}
         <button
-          className="bg-violet-500 px-4 py-2 rounded-xl"
+          className="bg-violet-500 px-4 py-2 rounded-xl text-white font-bold"
           onClick={handleSearch}
         >
           Search

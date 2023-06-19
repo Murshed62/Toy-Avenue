@@ -20,7 +20,7 @@ const Login = () => {
   const loginHandling = (event) => {
     event.preventDefault();
     setError("");
-    // setSuccess('')
+    setSuccess("")
     const form = event.target;
     const email = form.email.value;
     const password = form.password.value;
@@ -28,8 +28,26 @@ const Login = () => {
     signIn(email, password)
       .then((result) => {
         const createdUser = result.user;
+        // const loggedUser = {
+        //   email:user.email
+        // }
+        // console.log(loggedUser);
         navigate(from, { replace: true });
+        // fetch('http://localhost:5000/jwt',{
+        //   method:'POST',
+        //   headers:{
+        //     'content-type': 'application/json'
+        //   },
+        //   body: JSON.stringify(loggedUser)
+        // })
+        // .then(res=>res.json())
+        // .then(data=>{
+        //   console.log('jwt response',data);
+        // })
+
+        
         setSuccess(toast("signIn Successfully"));
+
       })
       .catch((error) => {
         setError(toast("wrong-password"));
@@ -64,8 +82,10 @@ const Login = () => {
                 </label>
                 <input
                   type="text"
+                  name="email"
                   placeholder="email"
                   className="input input-bordered"
+                  required
                 />
               </div>
               <div className="form-control">
@@ -73,9 +93,11 @@ const Login = () => {
                   <span className="label-text">Password</span>
                 </label>
                 <input
-                  type="text"
+                  type="password"
                   placeholder="password"
+                  name="password"
                   className="input input-bordered"
+                  required
                 />
                 <label className="label">
                   <p>

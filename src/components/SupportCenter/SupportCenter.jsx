@@ -27,7 +27,7 @@ const SupportCenter = () => {
           
         </div>
         <div className="form-control mt-6">
-          <button className="btn btn-primary">Send</button>
+          <button className="btn bg-purple-500 border-none font-bold">Send</button>
         </div>
       </div>
     </div>

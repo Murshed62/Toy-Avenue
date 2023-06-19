@@ -36,11 +36,11 @@ const ProductCollection = () => {
 
 
     <Tabs selectedIndex={active} onSelect={handleSubCategory}>
-      <TabList className="my-3 lg:mx-20">
+      <TabList className="my-3 lg:mx-20 text-center">
         
-        <Tab className="btn mb-6 w-64 lg:w-[200px] btn-primary mr-2">Marvel</Tab>
-        <Tab className="btn mb-6 w-64 btn-primary mr-2">Avenger</Tab>
-        <Tab className="btn w-64 btn-primary">Transformers</Tab>
+        <Tab className="btn mb-6 w-64 lg:w-[200px] bg-purple-500 border-none mr-2">Marvel</Tab>
+        <Tab className="btn mb-6 w-64 bg-purple-500 border-none mr-2">Avenger</Tab>
+        <Tab className="btn w-64 bg-purple-500 border-none">Transformers</Tab>
       </TabList>
 
       <TabPanel>
@@ -68,6 +68,7 @@ const ProductCollection = () => {
         </div>
       </TabPanel>
     </Tabs>
+    {/* {<TabPanel></TabPanel> ? <TabPanel></TabPanel> : "Not match"} */}
   </div>
   );
 };

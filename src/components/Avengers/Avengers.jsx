@@ -20,7 +20,7 @@ const Avengers = ({subCate}) => {
         <h2 className="card-title">Rating:<FaStar className="text-yellow-500"/>{rating}</h2>
        
         <div className="card-actions justify-end">
-         <Link to={`/showviewdetails/${_id}`}> <button className="btn btn-primary">View Details</button></Link>
+         <Link to={`/showviewdetails/${_id}`}> <button className="btn bg-purple-500 border-none">View Details</button></Link>
         </div>
       </div>
     </div>
